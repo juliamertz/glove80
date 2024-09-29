@@ -5,10 +5,6 @@
       url = "github:moergo-sc/zmk";
       flake = false;
     };
-    poetry2nix = {
-      url = "github:nix-community/poetry2nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -20,10 +16,7 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = nixpkgs.lib.systems.flakeExposed;
 
-      imports = [
-        ./flash.nix
-        ./firmware.nix
-      ];
+      imports = [ ./firmware.nix ];
 
       perSystem =
         {
@@ -33,16 +26,20 @@
           ...
         }:
         {
-          # `nix run`
+          packages.default = config.packages.firmware;
+          packages.flash =
+            let
+              firmwareLoader = pkgs.callPackage ./flash { };
+            in
+            pkgs.writeShellScriptBin "flash" # sh
+              ''
+                ${pkgs.lib.getExe firmwareLoader} --file ${config.packages.firmware} 
+              '';
+
           apps.default = {
             type = "app";
             program = config.packages.flash;
           };
-
-          # `nix build`
-          packages.default = config.packages.firmware;
-
-          formatter = pkgs.alejandra;
         };
     };
 }

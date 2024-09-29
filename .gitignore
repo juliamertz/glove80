@@ -1,3 +1,5 @@
 *~
 env/
 result
+flash/target
+flash/debug
