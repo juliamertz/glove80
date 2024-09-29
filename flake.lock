@@ -66,15 +66,16 @@
     "glove80-zmk": {
       "flake": false,
       "locked": {
-        "lastModified": 1718965659,
-        "narHash": "sha256-n4WRf1DATAj3HFymwkOSSKL0I/j6KXN04TyFJf17e+E=",
-        "owner": "moergo-sc",
+        "lastModified": 1716636649,
+        "narHash": "sha256-b9M0/yZ3oUxKHOjwLxDQXEn/neVE1jhuEFDB5AWXTRA=",
+        "owner": "darknao",
         "repo": "zmk",
-        "rev": "fd3aa4b64f7cb1d5879a18dd0dda0330ef9f618f",
+        "rev": "6d82f4819c71df9fea7b8e4f7936c60f4b6a50b4",
         "type": "github"
       },
       "original": {
-        "owner": "moergo-sc",
+        "owner": "darknao",
+        "ref": "darknao/rgb-dts",
         "repo": "zmk",
         "type": "github"
       }

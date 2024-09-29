@@ -6,7 +6,7 @@
     #   flake = false;
     # };
     glove80-zmk = {
-      url = "github:darknao/zmk/rgb-dts";
+      url = "github:darknao/zmk/darknao/rgb-dts";
       flake = false;
     };
     flake-parts = {
