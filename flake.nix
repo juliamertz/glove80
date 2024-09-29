@@ -1,8 +1,12 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # glove80-zmk = {
+    #   url = "github:moergo-sc/zmk";
+    #   flake = false;
+    # };
     glove80-zmk = {
-      url = "github:moergo-sc/zmk";
+      url = "github:darknao/zmk/rgb-dts";
       flake = false;
     };
     flake-parts = {
