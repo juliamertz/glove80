@@ -5,14 +5,15 @@
         "flake-parts": "flake-parts",
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1727624555,
-        "narHash": "sha256-Xg6dcAuG9x9269Ve4LLskk6JN8WqpA21RFuhAQPe4zg=",
+        "lastModified": 1727641972,
+        "narHash": "sha256-L/tPI5ufRz71p66cfp/S8a7kpruLfrxixFDpaiHXS04=",
         "owner": "juliamertz",
         "repo": "glove80-firmware-updater",
-        "rev": "9cf890cd8e69cb8eee8ac7331617c5312a89cdc6",
+        "rev": "5947e4e7fe505b6329acfae9d118ecb5f87de36e",
         "type": "github"
       },
       "original": {
@@ -100,6 +101,27 @@
         "flake-parts": "flake-parts_2",
         "glove80-zmk": "glove80-zmk",
         "nixpkgs": "nixpkgs"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "firmware-loader",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1727577080,
+        "narHash": "sha256-2LPT76Acp6ebt7fCt90eq/M8T2+X09s/yTVgfVFrtno=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "73a833855442ce8cee710cf4d8d054fea1c81196",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     }
   },

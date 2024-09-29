@@ -34,8 +34,7 @@
           packages.flash = let firmwareLoader = firmware-loader.packages.${system}.default; in
             pkgs.writeShellScriptBin "flash" # sh
               ''
-                echo Waiting for keyboard...
-                ${pkgs.lib.getExe firmwareLoader} --file ${config.packages.firmware}
+                ${pkgs.lib.getExe firmwareLoader} --file ${config.packages.firmware}/glove80.uf2
               '';
 
           apps.default = {
