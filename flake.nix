@@ -9,10 +9,14 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+    firmware-loader = {
+      url = "github:juliamertz/glove80-firmware-updater";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    { nixpkgs, flake-parts, ... }@inputs:
+    { nixpkgs, flake-parts, firmware-loader, ... }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = nixpkgs.lib.systems.flakeExposed;
 
@@ -27,13 +31,11 @@
         }:
         {
           packages.default = config.packages.firmware;
-          packages.flash =
-            let
-              firmwareLoader = pkgs.callPackage ./flash { };
-            in
+          packages.flash = let firmwareLoader = firmware-loader.packages.${system}.default; in
             pkgs.writeShellScriptBin "flash" # sh
               ''
-                ${pkgs.lib.getExe firmwareLoader} --file ${config.packages.firmware} 
+                echo Waiting for keyboard...
+                ${pkgs.lib.getExe firmwareLoader} --file ${config.packages.firmware}
               '';
 
           apps.default = {

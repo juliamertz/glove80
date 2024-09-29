@@ -1,17 +1,59 @@
 {
   "nodes": {
+    "firmware-loader": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1727624555,
+        "narHash": "sha256-Xg6dcAuG9x9269Ve4LLskk6JN8WqpA21RFuhAQPe4zg=",
+        "owner": "juliamertz",
+        "repo": "glove80-firmware-updater",
+        "rev": "9cf890cd8e69cb8eee8ac7331617c5312a89cdc6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "juliamertz",
+        "repo": "glove80-firmware-updater",
+        "type": "github"
+      }
+    },
     "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "firmware-loader",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1726153070,
+        "narHash": "sha256-HO4zgY0ekfwO5bX0QH/3kJ/h4KvUDFZg8YpkNwIbg1U=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "bcef6817a8b2aa20a5a6dbb19b43e63c5bf8619a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1715865404,
-        "narHash": "sha256-/GJvTdTpuDjNn84j82cU6bXztE0MSkdnTWClUCRub78=",
+        "lastModified": 1726153070,
+        "narHash": "sha256-HO4zgY0ekfwO5bX0QH/3kJ/h4KvUDFZg8YpkNwIbg1U=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "8dc45382d5206bd292f9c2768b8058a8fd8311d9",
+        "rev": "bcef6817a8b2aa20a5a6dbb19b43e63c5bf8619a",
         "type": "github"
       },
       "original": {
@@ -23,11 +65,11 @@
     "glove80-zmk": {
       "flake": false,
       "locked": {
-        "lastModified": 1708071572,
-        "narHash": "sha256-wbFkwJk9NJtDyjM7D/k1TCeeOXelhVhc3itfGKKZzcw=",
+        "lastModified": 1718965659,
+        "narHash": "sha256-n4WRf1DATAj3HFymwkOSSKL0I/j6KXN04TyFJf17e+E=",
         "owner": "moergo-sc",
         "repo": "zmk",
-        "rev": "2fad527cc5abed5bb59b4d4a4b0ee511d0e514e9",
+        "rev": "fd3aa4b64f7cb1d5879a18dd0dda0330ef9f618f",
         "type": "github"
       },
       "original": {
@@ -38,11 +80,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1716948383,
-        "narHash": "sha256-SzDKxseEcHR5KzPXLwsemyTR/kaM9whxeiJohbL04rs=",
+        "lastModified": 1727348695,
+        "narHash": "sha256-J+PeFKSDV+pHL7ukkfpVzCOO7mBSrrpJ3svwBFABbhI=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "ad57eef4ef0659193044870c731987a6df5cf56b",
+        "rev": "1925c603f17fc89f4c8f6bf6f631a802ad85d784",
         "type": "github"
       },
       "original": {
@@ -54,7 +96,8 @@
     },
     "root": {
       "inputs": {
-        "flake-parts": "flake-parts",
+        "firmware-loader": "firmware-loader",
+        "flake-parts": "flake-parts_2",
         "glove80-zmk": "glove80-zmk",
         "nixpkgs": "nixpkgs"
       }
