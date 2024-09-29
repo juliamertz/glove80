@@ -54,22 +54,6 @@
         "type": "github"
       }
     },
-    "keymap-drawer": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1717024330,
-        "narHash": "sha256-4tCJ+wAhsCBVd5NmcEkh0PF4QdwlW5Icf2kIu8e7XdY=",
-        "owner": "caksoylar",
-        "repo": "keymap-drawer",
-        "rev": "1b99a076ef43d87e7ebb1929cd133e6daf8a06d9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "caksoylar",
-        "repo": "keymap-drawer",
-        "type": "github"
-      }
-    },
     "nix-github-actions": {
       "inputs": {
         "nixpkgs": [
@@ -135,7 +119,6 @@
       "inputs": {
         "flake-parts": "flake-parts",
         "glove80-zmk": "glove80-zmk",
-        "keymap-drawer": "keymap-drawer",
         "nixpkgs": "nixpkgs",
         "poetry2nix": "poetry2nix"
       }

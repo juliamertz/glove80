@@ -5,10 +5,6 @@
       url = "github:moergo-sc/zmk";
       flake = false;
     };
-    keymap-drawer = {
-      url = "github:caksoylar/keymap-drawer";
-      flake = false;
-    };
     poetry2nix = {
       url = "github:nix-community/poetry2nix";
       inputs.nixpkgs.follows = "nixpkgs";

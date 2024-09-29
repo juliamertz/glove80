@@ -22,5 +22,4 @@ jobs:
       - name: Run flake checker
         uses: DeterminateSystems/flake-checker-action@main
       - name: Check flake
-        # TODO print to $GITHUB_STEP_SUMMARY
         run: nix flake check
