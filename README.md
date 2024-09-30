@@ -9,8 +9,6 @@ nix build
 
 ## Flash firmware
 
-TODO: flash both halves with one script
-
 ```sh
 # Connect half (in bootloader mode) then run this. repeat this for both halves
 nix run

@@ -9,11 +9,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1727703420,
-        "narHash": "sha256-85QkJkkvdjZl20H4u76O0YThZFxK1ZdQtcnuDf5QZCU=",
+        "lastModified": 1727718894,
+        "narHash": "sha256-2RDtgGJz3UVe3WP5m0/4kbG2fMjMFxfPJXXkcO7kntE=",
         "owner": "juliamertz",
         "repo": "glove80-firmware-updater",
-        "rev": "0c8543e3748df815f3ec55f0c88e0a38d58ecbdd",
+        "rev": "6418721d1b08586853267d48d5e4e40352e03f04",
         "type": "github"
       },
       "original": {
@@ -66,26 +66,27 @@
     "glove80-zmk": {
       "flake": false,
       "locked": {
-        "lastModified": 1718965659,
-        "narHash": "sha256-n4WRf1DATAj3HFymwkOSSKL0I/j6KXN04TyFJf17e+E=",
-        "owner": "moergo-sc",
+        "lastModified": 1716636649,
+        "narHash": "sha256-b9M0/yZ3oUxKHOjwLxDQXEn/neVE1jhuEFDB5AWXTRA=",
+        "owner": "darknao",
         "repo": "zmk",
-        "rev": "fd3aa4b64f7cb1d5879a18dd0dda0330ef9f618f",
+        "rev": "6d82f4819c71df9fea7b8e4f7936c60f4b6a50b4",
         "type": "github"
       },
       "original": {
-        "owner": "moergo-sc",
+        "owner": "darknao",
+        "ref": "darknao/rgb-dts",
         "repo": "zmk",
         "type": "github"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1727348695,
-        "narHash": "sha256-J+PeFKSDV+pHL7ukkfpVzCOO7mBSrrpJ3svwBFABbhI=",
+        "lastModified": 1727634051,
+        "narHash": "sha256-S5kVU7U82LfpEukbn/ihcyNt2+EvG7Z5unsKW9H/yFA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "1925c603f17fc89f4c8f6bf6f631a802ad85d784",
+        "rev": "06cf0e1da4208d3766d898b7fdab6513366d45b9",
         "type": "github"
       },
       "original": {

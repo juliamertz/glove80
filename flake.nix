@@ -2,7 +2,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     glove80-zmk = {
-      url = "github:moergo-sc/zmk";
+      # Community fork including per layer/key rgb
+      url = "github:darknao/zmk/darknao/rgb-dts";
       flake = false;
     };
     flake-parts = {

@@ -1,16 +1,45 @@
 #include <behaviors.dtsi>
-/* Include all behavior includes needed */
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
+#include <dt-bindings/zmk/rgb_colors.h>
 
-/* Automatically generated layer name #define */
 #define LAYER_Base 0
 #define LAYER_Lower 1
 #define LAYER_Magic 2
+#define LAYER_Gaming 3
 
-/* Glove80 system behavior & macros */
+/ {
+    underglow-layer {
+        compatible  = "zmk,underglow-layer";
+
+        lower {
+            bindings = <
+                ______ ______ ______ ______ ______                                                          0x8A2BE2 0xa966e8 0xcba8ec ______ ______
+                ______ ______ ______ ______ ______ ______                                            ______     GOLD   ORANGE   ORANGE ORANGE ______
+                ______ ______ ______    RED ______ ______                                            ______   YELLOW   YELLOW   YELLOW ORANGE ______
+                ______ ______    RED    RED    RED ______                                            ______   YELLOW   YELLOW   YELLOW ORANGE ______
+                ______ ______ ______ ______ ______ ______ ______ ______  GREEN  ______ ______ ______ ______   YELLOW   YELLOW   YELLOW    RED ______
+                ______ ______ ______ ______ ______        ______ ______ ______  ______ ______ ______          YELLOW   YELLOW   YELLOW    RED ______
+                >;
+            layer-id = <LAYER_Lower>;
+        };
+
+        gaming {
+            bindings = <
+                ______ ______ ______ ______ ______                                                          ______ ______ ______ ______ ______
+                ______ ______ ______ ______ ______ ______                                            ______     ______   ______   ______ ______ ______
+                ______ ______ ______    PINK ______ ______                                            ______   ______   ______   ______ ______ ______
+                ______  GREEN    PINK    PINK PINK ______                                            ______   ______   ______   ______ ______ ______
+                ______ ______ ______ ______ ______ ______ ______ ______ RED  ______ ______ ______ ______   ______   ______   ______    ______ ______
+                ______ ______ ______ ______ ______        ______ ______ ______ ______ ______ ______          ______   ______   ______    ______ ______
+                >;
+            layer-id = <LAYER_Gaming>;
+        };
+    };
+};
+
 / {
     behaviors {
         // For the "layer" key, it'd nice to be able to use it as either a shift or a toggle.
@@ -237,6 +266,17 @@
 #define POS_RH_C6R5 63
 #define POS_RH_C6R6 79
 
+/* Custom Defined Behaviors */
+/ {
+
+};
+
+/ {
+    macros {
+    
+    };
+};
+
 / {
     combos {
             compatible = "zmk,combos";
@@ -286,9 +326,9 @@
                &kp F1    &kp F2   &kp F3    &kp F4     &kp F5                                                                                 &kp F6     &kp F7    &kp F8    &kp F9    &kp F10
             &kp EQUAL    &kp N1   &kp N2    &kp N3     &kp N4  &kp N5                                                                 &kp N6  &kp N7     &kp N8    &kp N9    &kp N0  &kp MINUS
               &kp TAB    &trans   &kp Q    &kp W     &kp E      &kp R   &kp T                                                                  &kp Y   &kp U      &kp I     &kp O     &kp P
-              &kp ESC    &trans   &kp A    &kp S     &kp D      &kp F   &kp G                                                                  &kp H   &kp J      &kp K     &kp L  &kp SEMI
-            &kp GRAVE    &kp Z    &kp X     &kp C      &kp V   &kp B  &kp LSHFT  &kp LCTRL   &lower  &kp RALT  &kp RCTRL  &kp RSHFT   &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp PG_ UP
-            &tog 3       &kp HOME  &kp END  &kp LEFT  &kp RIGHT          &kp SPACE   &kp LGUI  &kp RET  &kp RGUI    &kp RET   &kp BSPC          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT  &kp PG_DN
+              &kp ESC    &kp LSHFT   &kp A    &kp S     &kp D      &kp F   &kp G                                                                  &kp H   &kp J      &kp K     &kp L  &kp SEMI
+            &kp GRAVE    &kp Z    &kp X     &kp C      &kp V   &kp B  &kp LSHFT  &kp LGUI   &tog 3  &kp RALT  &kp RCTRL  &kp RSHFT   &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp PG_UP
+            &trans       &kp HOME  &kp END  &kp LEFT  &kp RIGHT          &kp SPACE   &kp LCTRL  &kp RET  &kp RGUI    &kp RET   &kp BSPC          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT  &kp PG_DN
             >;
         };
     };
