@@ -1,14 +1,14 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    glove80-zmk = {
-      # Community fork including per layer/key rgb
-      url = "github:darknao/zmk/darknao/rgb-dts";
-      flake = false;
-    };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
+    glove80-zmk = {
+      url = "github:darknao/zmk/darknao/rgb-dts";
+      flake = false;
     };
     firmware-loader = {
       url = "github:juliamertz/glove80-firmware-updater";
@@ -17,30 +17,38 @@
   };
 
   outputs =
-    { nixpkgs, flake-parts, firmware-loader, ... }@inputs:
+    {
+      nixpkgs,
+      flake-parts,
+      firmware-loader,
+      ...
+    }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = nixpkgs.lib.systems.flakeExposed;
-
-      imports = [ ./firmware.nix ];
 
       perSystem =
         {
           config,
           pkgs,
+          lib,
           system,
           ...
         }:
+        let
+          inherit (pkgs) callPackage;
+          inherit (config) packages;
+          firmwareLoader = firmware-loader.packages.${system}.default;
+        in
         {
-          packages.default = config.packages.firmware;
-          packages.flash = let firmwareLoader = firmware-loader.packages.${system}.default; in
-            pkgs.writeShellScriptBin "flash" # sh
-              ''
-                ${pkgs.lib.getExe firmwareLoader} --file ${config.packages.firmware}/glove80.uf2
-              '';
+          packages.firmware = callPackage ./firmware.nix { inherit inputs; };
+          packages.flash = pkgs.writeShellScriptBin "flash" ''
+            ${lib.getExe firmwareLoader} --file ${packages.firmware}/glove80.uf2
+          '';
 
+          packages.default = packages.firmware;
           apps.default = {
             type = "app";
-            program = config.packages.flash;
+            program = packages.flash;
           };
         };
     };
