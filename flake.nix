@@ -14,6 +14,15 @@
       url = "github:juliamertz/glove80-firmware-updater";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    keymap-drawer = {
+      url = "github:caksoylar/keymap-drawer";
+      flake = false;
+    };
+    poetry2nix = {
+      url = "github:nix-community/poetry2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -35,13 +44,14 @@
           ...
         }:
         let
-          inherit (pkgs) callPackage;
+          inherit (pkgs) callPackage writeShellScriptBin;
           inherit (config) packages;
           firmwareLoader = firmware-loader.packages.${system}.default;
         in
         {
-          packages.firmware = callPackage ./firmware.nix { inherit inputs; };
-          packages.flash = pkgs.writeShellScriptBin "flash" ''
+          packages.firmware = callPackage ./packages/firmware.nix { inherit inputs; };
+          packages.visual = callPackage ./packages/visual.nix { inherit inputs; };
+          packages.flash = writeShellScriptBin "flash" ''
             ${lib.getExe firmwareLoader} --file ${packages.firmware}/glove80.uf2
           '';
 

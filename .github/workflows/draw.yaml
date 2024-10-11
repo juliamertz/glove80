@@ -1,0 +1,54 @@
+name: Draw keymaps
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "**.lock"
+      - "glove80.keymap"
+
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write 
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Set to 2 if amending, or 1 if creating a new commit
+          fetch-depth: 1
+          submodules: recursive
+
+      - name: Install nix
+        uses: cachix/install-nix-action@v25
+      - name: Setup nix cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Draw keymaps
+        run: |
+          nix build .#visual
+          cp result/layout.svg img/layout.svg
+
+      - name: Commit changes
+        id: commit
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "[Draw] ${{ github.event.head_commit.message || '(Manually triggered)' }}"
+          file_pattern: img/**
+
+      - name: Summarize
+        run: |
+          sha="${{ steps.commit.outputs.commit_hash }}"
+          url="${{ github.server_url }}/${{ github.repository }}/commit/$sha"
+          
+          echo "## Summary" >> $GITHUB_STEP_SUMMARY
+          
+          if [[ -z "$sha" ]]; then
+            echo "Nothing to commit!" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "[\`${sha:0:6}\`]($url) pushed to \`${{ github.ref_name }}\`." >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo >> $GITHUB_STEP_SUMMARY
+

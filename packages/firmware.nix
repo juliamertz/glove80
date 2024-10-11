@@ -2,8 +2,8 @@
 let
   firmware = import inputs.glove80-zmk { inherit pkgs; };
 
-  keymap = ./glove80.keymap;
-  kconfig = ./glove80.conf;
+  keymap = ../glove80.keymap;
+  kconfig = ../glove80.conf;
 
   left = firmware.zmk.override {
     inherit keymap kconfig;

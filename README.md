@@ -14,6 +14,10 @@ nix build
 nix run
 ```
 
+## Layout
+
+![SVG of keyboard layout](img/layout.svg)
+
 # Credits
 
 Layout adapted from [MoErgo's template](https://github.com/moergo-sc/glove80-zmk-config)
