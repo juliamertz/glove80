@@ -52,7 +52,7 @@
           packages.firmware = callPackage ./packages/firmware.nix { inherit inputs; };
           packages.visual = callPackage ./packages/visual.nix { inherit inputs; };
           packages.flash = writeShellScriptBin "flash" ''
-            ${lib.getExe firmwareLoader} --file ${packages.firmware}/glove80.uf2
+            ${lib.getExe firmwareLoader} --file ${packages.firmware}/glove80.uf2 --mount
           '';
 
           packages.default = packages.firmware;
