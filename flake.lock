@@ -9,11 +9,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1728585085,
-        "narHash": "sha256-O34W5ZzyWw5d/m5Nt0NPkFAJMRClt80661LrLwxqYZo=",
+        "lastModified": 1728669404,
+        "narHash": "sha256-Xzmntcqn7L1PO3HQQmt6Ic8M/OWguVND0/X9lVACqko=",
         "owner": "juliamertz",
         "repo": "glove80-firmware-updater",
-        "rev": "e0d91d7b19c717a307a42085d819cca7384d7ac5",
+        "rev": "e2650202a20e757db773f921a952be4c778dd5df",
         "type": "github"
       },
       "original": {

@@ -20,8 +20,8 @@
                 ______ ______ ______ ______ ______ ______                                            ______     GOLD   ORANGE   ORANGE ORANGE ______
                 ______ ______ ______    RED ______ ______                                            ______   YELLOW   YELLOW   YELLOW ORANGE ______
                 ______ ______    RED    RED    RED ______                                            ______   YELLOW   YELLOW   YELLOW ORANGE ______
-                ______ ______ ______ ______ ______ ______ ______ ______  GREEN  ______ ______ ______ ______   YELLOW   YELLOW   YELLOW    RED ______
-                ______ ______ ______ ______ ______        ______ ______ ______  ______ ______ ______          YELLOW   YELLOW   YELLOW    RED ______
+                ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ ______   YELLOW   YELLOW   YELLOW    RED ______
+                ______ ______ ______ ______ ______        ______ ______ GREEN  ______ ______ ______          YELLOW   YELLOW   YELLOW    RED ______
                 >;
             layer-id = <LAYER_Lower>;
         };
@@ -294,8 +294,8 @@
             &kp EQUAL    &kp N1   &kp N2    &kp N3     &kp N4  &kp N5                                                                 &kp N6  &kp N7     &kp N8    &kp N9    &kp N0  &kp MINUS
               &kp TAB     &kp Q    &kp W     &kp E      &kp R   &kp T                                                                  &kp Y   &kp U      &kp I     &kp O     &kp P   &kp BSLH
               &kp ESC     &kp A    &kp S     &kp D      &kp F   &kp G                                                                  &kp H   &kp J      &kp K     &kp L  &kp SEMI    &kp SQT
-            &kp GRAVE     &kp Z    &kp X     &kp C      &kp V   &kp B  &kp LSHFT  &kp LCTRL   &lower  &kp LALT  &kp RCTRL  &kp RSHFT   &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp PG_UP
- &magic LAYER_Magic 0     &tog 3  &kp END  &kp LEFT  &kp RIGHT          &kp SPACE   &kp LGUI  &kp RET  &kp RGUI    &kp RET   &kp BSPC          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT  &kp PG_DN
+            &kp GRAVE     &kp Z    &kp X     &kp C      &kp V   &kp B  &kp LSHFT  &kp LCTRL   &trans  &kp RALT  &kp RCTRL  &kp RSHFT   &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp PG_UP
+ &magic LAYER_Magic 0     &tog 3  &kp END  &kp LEFT  &kp RIGHT          &kp SPACE   &kp LGUI  &lower  &kp RGUI    &kp RET   &kp BSPC          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT  &kp PG_DN
             >;
         };
 
