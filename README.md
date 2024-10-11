@@ -9,10 +9,7 @@ nix build
 
 ## Flash firmware
 
-```sh
-# Connect half (in bootloader mode) then run this. repeat this for both halves
-nix run
-```
+First execute `nix run`, then connect both halves and put them into bootloader mode.
 
 ## Layout
 
