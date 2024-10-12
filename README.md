@@ -13,7 +13,7 @@ First execute `nix run`, then connect both halves and put them into bootloader m
 
 ## Layout
 
-![SVG of keyboard layout](img/layout.svg)
+![SVG of keyboard layout](assets/layout.svg)
 
 # Credits
 

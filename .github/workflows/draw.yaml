@@ -28,7 +28,7 @@ jobs:
       - name: Draw keymaps
         run: |
           nix build .#visual
-          cp result/layout.svg img/layout.svg
+          cp result/layout.svg assets/layout.svg
 
       - name: Commit changes
         id: commit
