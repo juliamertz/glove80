@@ -15,28 +15,73 @@
         compatible = "zmk,underglow-layer";
 
         lower {
-            // dtsfmt-ignore
             bindings = <
-                ______ ______ ______ ______ ______                                                          0x8A2BE2 0xa966e8 0xcba8ec ______ ______
-                ______ ______ ______ ______ ______ ______                                            ______     GOLD   ORANGE   ORANGE ORANGE ______
-                ______ ______ ______    RED ______ ______                                            ______   YELLOW   YELLOW   YELLOW ORANGE ______
-                ______ ______    RED    RED    RED ______                                            ______   YELLOW   YELLOW   YELLOW ORANGE ______
-                ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ ______   YELLOW   YELLOW   YELLOW    RED ______
-                ______ ______ ______ ______ ______        ______ ______ GREEN  ______ ______ ______          YELLOW   YELLOW   YELLOW    RED ______
-                >;
+                ______ ______ ______ ______ ______                                                         0x8A2BE2 0xa966e8 0xcba8ec ______ ______
+                ______ ______ ______ ______ ______ ______                                           ______ GOLD     ORANGE   ORANGE   ORANGE ______
+                ______ ______ ______ RED    ______ ______                                           ______ YELLOW   YELLOW   YELLOW   ORANGE ______
+                ______ ______ RED    RED    RED    ______                                           ______ YELLOW   YELLOW   YELLOW   ORANGE ______
+                ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ YELLOW   YELLOW   YELLOW   RED    ______
+                ______ ______ ______ ______ ______        ______ ______ GREEN  ______ ______ ______        YELLOW   YELLOW   YELLOW   RED    ______
+            >;
             layer-id = <LAYER_Lower>;
         };
         gaming {
-            // dtsfmt-ignore
             bindings = <
                 ______ ______ ______ ______ ______                                                         ______ ______ ______ ______ ______
                 ______ ______ ______ ______ ______ ______                                           ______ ______ ______ ______ ______ ______
-                ______ ______ ______   PINK ______ ______                                           ______ ______ ______ ______ ______ ______
-                ______  GREEN  PINK   PINK   PINK  ______                                           ______ ______ ______ ______ ______ ______
-                ______ ______ ______ ______ ______ ______ ______ ______   RED  ______ ______ ______ ______ ______ ______ ______ ______ ______ 
+                ______ ______ ______ PINK   ______ ______                                           ______ ______ ______ ______ ______ ______
+                ______ GREEN  PINK   PINK   PINK   ______                                           ______ ______ ______ ______ ______ ______
+                ______ ______ ______ ______ ______ ______ ______ ______ RED    ______ ______ ______ ______ ______ ______ ______ ______ ______
                 ______ ______ ______ ______ ______        ______ ______ ______ ______ ______ ______        ______ ______ ______ ______ ______
-                >;
+            >;
             layer-id = <LAYER_Gaming>;
+        };
+    };
+};
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        layer_Base {
+            bindings = <
+                &kp F1                 &kp F2   &kp F3    &kp F4     &kp F5                                                                                                         &kp F6   &kp F7      &kp F8     &kp F9     &kp F10
+                &kp EQUAL              &kp N1   &kp N2    &kp N3     &kp N4      &kp N5                                                                                    &kp N6   &kp N7   &kp N8      &kp N9     &kp N0     &kp MINUS
+                &kp TAB                &kp Q    &kp W     &kp E      &kp R       &kp T                                                                                     &kp Y    &kp U    &kp I       &kp O      &kp P      &kp BSLH
+                &kp ESC                &kp A    &kp S     &kp D      &kp F       &kp G                                                                                     &kp H    &kp J    &kp K       &kp L      &kp SEMI   &kp SQT
+                &kp GRAVE              &kp Z    &kp X     &kp C      &kp V       &kp B    &kp LSHFT   &kp LCTRL   &trans     &kp RALT   &kp RSHFT   &kp RCTRL              &kp N    &kp M    &kp COMMA   &kp DOT    &kp FSLH   &kp PG_UP
+                &magic LAYER_Magic 0   &tog 3   &kp END   &kp LEFT   &kp RIGHT            &kp SPACE   &kp LGUI    &kp LALT   &kp RGUI   &kp RET     &lt LAYER_Lower BSPC            &kp UP   &kp DOWN    &kp LBKT   &kp RBKT   &kp PG_DN
+            >;
+        };
+        layer_Lower {
+            bindings = <
+                &kp C_BRI_DN           &kp C_BRI_UP   &kp C_PREV   &kp C_NEXT   &kp C_PP                                                                                      &kp C_MUTE       &kp C_VOL_DN   &kp C_VOL_UP      &none             &kp PAUSE_BREAK
+                &kp F11                &kp DEL        &none        &none        &none      &kp HOME                                                          &trans           &trans           &trans         &trans            &kp KP_MULTIPLY   &kp PRINTSCREEN
+                &trans                 &none          &none        &trans       &none      &kp END                                                           &trans           &trans           &kp LPAR       &kp RPAR          &kp KP_MINUS      &kp SCROLLLOCK
+                &trans                 &none          &trans       &trans       &trans     &kp PG_UP                                                         &kp LEFT_ARROW   &kp DOWN_ARROW   &kp UP_ARROW   &kp RIGHT_ARROW   &kp KP_PLUS       &none
+                &trans                 &kp K_APP      &kp BSPC     &kp F11      &kp F12    &kp PG_DN   &trans   &trans   &to 0    &trans   &trans   &trans   &kp COMMA        &trans           &kp LS(LBKT)   &kp LS(RBKT)      &kp KP_ENTER      &trans
+                &magic LAYER_Magic 0   &kp CAPS       &kp INS      &kp F11      &kp F12                &trans   &trans   &trans   &trans   &trans   &trans                    &trans           &kp LBKT       &kp RBKT          &kp KP_ENTER      &trans
+            >;
+        };
+        layer_Magic {
+            bindings = <
+                &bt BT_CLR    &none             &none             &none             &none                                                                                              &none   &none   &none   &none   &bt BT_CLR_ALL
+                &none         &none             &none             &none             &none             &none                                                                    &none   &none   &none   &none   &none   &none
+                &none         &rgb_ug RGB_SPI   &rgb_ug RGB_SAI   &rgb_ug RGB_HUI   &rgb_ug RGB_BRI   &rgb_ug RGB_TOG                                                          &none   &none   &none   &none   &none   &none
+                &bootloader   &rgb_ug RGB_SPD   &rgb_ug RGB_SAD   &rgb_ug RGB_HUD   &rgb_ug RGB_BRD   &rgb_ug RGB_EFF                                                          &none   &none   &none   &none   &none   &bootloader
+                &sys_reset    &none             &none             &none             &none             &none             &bt_2   &bt_3   &none          &none   &none   &none   &none   &none   &none   &none   &none   &sys_reset
+                &none         &none             &none             &none             &none                               &bt_0   &bt_1   &out OUT_USB   &none   &none   &none           &none   &none   &none   &none   &to 2
+            >;
+        };
+        layer_Gaming {
+            bindings = <
+                &kp F1      &kp F2      &kp F3    &kp F4     &kp F5                                                                                             &kp F6   &kp F7      &kp F8     &kp F9     &kp F10
+                &kp EQUAL   &kp N1      &kp N2    &kp N3     &kp N4      &kp N5                                                                        &kp N6   &kp N7   &kp N8      &kp N9     &kp N0     &kp MINUS
+                &kp TAB     &trans      &kp Q     &kp W      &kp E       &kp R                                                                         &kp T    &kp Y    &kp U       &kp I      &kp O      &kp P
+                &kp ESC     &kp LSHFT   &kp A     &kp S      &kp D       &kp F                                                                         &kp G    &kp H    &kp J       &kp K      &kp L      &kp SEMI
+                &kp GRAVE   &kp Z       &kp X     &kp C      &kp V       &kp B    &kp LSHFT   &kp LGUI    &tog 3    &kp RALT   &kp RCTRL   &kp RSHFT   &kp N    &kp M    &kp COMMA   &kp DOT    &kp FSLH   &kp PG_UP
+                &trans      &kp HOME    &kp END   &kp LEFT   &kp RIGHT            &kp SPACE   &kp LCTRL   &kp RET   &kp RGUI   &kp RET     &kp BSPC             &kp UP   &kp DOWN    &kp LBKT   &kp RBKT   &kp PG_DN
+            >;
         };
     };
 };
@@ -133,53 +178,6 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&out OUT_BLE>, <&bt BT_SEL 3>;
-        };
-    };
-};
-
-/ {
-    keymap {
-        compatible = "zmk,keymap";
-
-        layer_Base {
-            bindings = <
-                &kp F1                 &kp F2   &kp F3    &kp F4     &kp F5                                                                                            &kp F6   &kp F7      &kp F8     &kp F9     &kp F10
-                &kp EQUAL              &kp N1   &kp N2    &kp N3     &kp N4      &kp N5                                                                       &kp N6   &kp N7   &kp N8      &kp N9     &kp N0     &kp MINUS
-                &kp TAB                &kp Q    &kp W     &kp E      &kp R       &kp T                                                                        &kp Y    &kp U    &kp I       &kp O      &kp P      &kp BSLH
-                &kp ESC                &kp A    &kp S     &kp D      &kp F       &kp G                                                                        &kp H    &kp J    &kp K       &kp L      &kp SEMI   &kp SQT
-                &kp GRAVE              &kp Z    &kp X     &kp C      &kp V       &kp B    &kp LSHFT   &kp LCTRL   &trans   &kp RALT   &kp RCTRL   &kp RSHFT   &kp N    &kp M    &kp COMMA   &kp DOT    &kp FSLH   &kp PG_UP
-                &magic LAYER_Magic 0   &tog 3   &kp END   &kp LEFT   &kp RIGHT            &kp SPACE   &kp LGUI    &lower   &kp RGUI   &kp RET     &kp BSPC             &kp UP   &kp DOWN    &kp LBKT   &kp RBKT   &kp PG_DN
-            >;
-        };
-        layer_Lower {
-            bindings = <
-                &kp C_BRI_DN           &kp C_BRI_UP   &kp C_PREV       &kp C_NEXT       &kp C_PP                                                                                                    &kp C_MUTE   &kp C_VOL_DN   &kp C_VOL_UP   &none             &kp PAUSE_BREAK
-                &kp F11                &kp DEL        &none            &none            &none             &kp HOME                                                          &kp LEFT_PARENTHESIS    &kp KP_NUM   &kp KP_EQUAL   &kp KP_SLASH   &kp KP_MULTIPLY   &kp PRINTSCREEN
-                &trans                 &none          &none            &kp UP_ARROW     &none             &kp END                                                           &kp RIGHT_PARENTHESIS   &kp KP_N7    &kp KP_N8      &kp KP_N9      &kp KP_MINUS      &kp SCROLLLOCK
-                &trans                 &none          &kp LEFT_ARROW   &kp DOWN_ARROW   &kp RIGHT_ARROW   &kp PG_UP                                                         &kp PERCENT             &kp KP_N4    &kp KP_N5      &kp KP_N6      &kp KP_PLUS       &none
-                &trans                 &kp K_APP      &none            &kp F11          &kp F12           &kp PG_DN   &trans   &trans   &to 0    &trans   &trans   &trans   &kp COMMA               &kp KP_N1    &kp KP_N2      &kp KP_N3      &kp KP_ENTER      &trans
-                &magic LAYER_Magic 0   &kp CAPS       &kp INS          &kp F11          &kp F12                       &trans   &trans   &trans   &trans   &trans   &trans                           &kp KP_N0    &kp KP_N0      &kp KP_DOT     &kp KP_ENTER      &trans
-            >;
-        };
-        layer_Magic {
-            bindings = <
-                &bt BT_CLR    &none             &none             &none             &none                                                                                              &none   &none   &none   &none   &bt BT_CLR_ALL
-                &none         &none             &none             &none             &none             &none                                                                    &none   &none   &none   &none   &none   &none
-                &none         &rgb_ug RGB_SPI   &rgb_ug RGB_SAI   &rgb_ug RGB_HUI   &rgb_ug RGB_BRI   &rgb_ug RGB_TOG                                                          &none   &none   &none   &none   &none   &none
-                &bootloader   &rgb_ug RGB_SPD   &rgb_ug RGB_SAD   &rgb_ug RGB_HUD   &rgb_ug RGB_BRD   &rgb_ug RGB_EFF                                                          &none   &none   &none   &none   &none   &bootloader
-                &sys_reset    &none             &none             &none             &none             &none             &bt_2   &bt_3   &none          &none   &none   &none   &none   &none   &none   &none   &none   &sys_reset
-                &none         &none             &none             &none             &none                               &bt_0   &bt_1   &out OUT_USB   &none   &none   &none           &none   &none   &none   &none   &to 2
-            >;
-        };
-        layer_Gaming {
-            bindings = <
-                &kp F1      &kp F2      &kp F3    &kp F4     &kp F5                                                                                             &kp F6   &kp F7      &kp F8     &kp F9     &kp F10
-                &kp EQUAL   &kp N1      &kp N2    &kp N3     &kp N4      &kp N5                                                                        &kp N6   &kp N7   &kp N8      &kp N9     &kp N0     &kp MINUS
-                &kp TAB     &trans      &kp Q     &kp W      &kp E       &kp R                                                                         &kp T    &kp Y    &kp U       &kp I      &kp O      &kp P
-                &kp ESC     &kp LSHFT   &kp A     &kp S      &kp D       &kp F                                                                         &kp G    &kp H    &kp J       &kp K      &kp L      &kp SEMI
-                &kp GRAVE   &kp Z       &kp X     &kp C      &kp V       &kp B    &kp LSHFT   &kp LGUI    &tog 3    &kp RALT   &kp RCTRL   &kp RSHFT   &kp N    &kp M    &kp COMMA   &kp DOT    &kp FSLH   &kp PG_UP
-                &trans      &kp HOME    &kp END   &kp LEFT   &kp RIGHT            &kp SPACE   &kp LCTRL   &kp RET   &kp RGUI   &kp RET     &kp BSPC             &kp UP   &kp DOWN    &kp LBKT   &kp RBKT   &kp PG_DN
-            >;
         };
     };
 };
