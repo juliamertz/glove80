@@ -1,8 +1,6 @@
 {
   rustPlatform,
   fetchgit,
-  # runCommand,
-  # inputs,
   ...
 }:
 rustPlatform.buildRustPackage rec {

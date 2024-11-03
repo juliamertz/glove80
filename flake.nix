@@ -7,21 +7,15 @@
     };
 
     glove80-zmk = {
+      # Community fork with per-layer rgb
       url = "github:darknao/zmk/darknao/rgb-dts";
+      # url = "github:moergo-sc/zmk";
       flake = false;
     };
     firmware-loader = {
       url = "github:juliamertz/glove80-firmware-updater";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # dtsfmt = {
-    #   url = "github:juliamertz/dtsfmt/dev?submodules=1";
-    #   flake = false;
-    # };
-    # treesitter-devicetree = {
-    #   url = "github:mskelton/tree-sitter-devicetree";
-    #   flake = false;
-    # };
     keymap-drawer = {
       url = "github:caksoylar/keymap-drawer";
       flake = false;
@@ -51,7 +45,7 @@
           ...
         }:
         let
-          inherit (pkgs) callPackage writeShellScriptBin;
+          inherit (pkgs) callPackage writeShellScriptBin writeText;
           inherit (config) packages;
 
           firmwareLoader = firmware-loader.packages.${system}.default;
@@ -66,7 +60,7 @@
           packages.format =
             let
               dtsfmtrc =
-                pkgs.writeText ".dtsfmtrc.toml" # toml
+                writeText ".dtsfmtrc.toml" # toml
                   ''
                     layout = "moergo:glove80"
 
