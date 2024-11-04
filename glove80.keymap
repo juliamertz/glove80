@@ -42,15 +42,15 @@
 / {
     keymap {
         compatible = "zmk,keymap";
-
+        // home row mods: alt - shift - ctrl - gui
         layer_Base {
             bindings = <
-                &kp F1                 &kp F2   &kp F3    &kp F4     &kp F5                                                                                                         &kp F6   &kp F7      &kp F8     &kp F9     &kp F10
-                &kp EQUAL              &kp N1   &kp N2    &kp N3     &kp N4      &kp N5                                                                                    &kp N6   &kp N7   &kp N8      &kp N9     &kp N0     &kp MINUS
-                &kp TAB                &kp Q    &kp W     &kp E      &kp R       &kp T                                                                                     &kp Y    &kp U    &kp I       &kp O      &kp P      &kp BSLH
-                &kp ESC                &kp A    &kp S     &kp D      &kp F       &kp G                                                                                     &kp H    &kp J    &kp K       &kp L      &kp SEMI   &kp SQT
-                &kp GRAVE              &kp Z    &kp X     &kp C      &kp V       &kp B    &kp LSHFT   &kp LCTRL   &trans     &kp RALT   &kp RSHFT   &kp RCTRL              &kp N    &kp M    &kp COMMA   &kp DOT    &kp FSLH   &kp PG_UP
-                &magic LAYER_Magic 0   &tog 3   &kp END   &kp LEFT   &kp RIGHT            &kp SPACE   &kp LGUI    &kp LALT   &kp RGUI   &kp RET     &lt LAYER_Lower BSPC            &kp UP   &kp DOWN    &kp LBKT   &kp RBKT   &kp PG_DN
+                &kp F1                 &kp F2        &kp F3         &kp F4         &kp F5                                                                                                           &kp F6        &kp F7         &kp F8         &kp F9           &kp F10
+                &kp EQUAL              &kp N1        &kp N2         &kp N3         &kp N4        &kp N5                                                                                    &kp N6   &kp N7        &kp N8         &kp N9         &kp N0           &kp MINUS
+                &kp TAB                &kp Q         &kp W          &kp E          &kp R         &kp T                                                                                     &kp Y    &kp U         &kp I          &kp O          &kp P            &kp BSLH
+                &kp ESC                &hml LALT A   &hml LSHFT S   &hml LCTRL D   &hml LGUI F   &kp G                                                                                     &kp H    &hmr RGUI J   &hmr RCTRL K   &hmr RSHFT L   &hmr RALT SEMI   &kp SQT
+                &kp GRAVE              &kp Z         &kp X          &kp C          &kp V         &kp B    &kp LSHFT   &kp LCTRL   &trans     &kp RALT   &kp RSHFT   &kp RCTRL              &kp N    &kp M         &kp COMMA      &kp DOT        &kp FSLH         &kp PG_UP
+                &magic LAYER_Magic 0   &tog 3        &kp END        &kp LEFT       &kp RIGHT              &kp SPACE   &kp LGUI    &kp LALT   &kp RGUI   &kp RET     &lt LAYER_Lower BSPC            &kp UP        &kp DOWN       &kp LBKT       &kp RBKT         &kp PG_DN
             >;
         };
         layer_Lower {
@@ -86,6 +86,150 @@
     };
 };
 
+// key definitions
+// https://github.com/urob/zmk-helpers/blob/main/include/zmk-helpers/key-labels/glove80.h
+// Groups
+#define KEYS_L LC1 LC2 LC3 LC4 LC5 LN0 LN1 LN2 LN3 LN4 LN5 LT0 LT1 LT2 LT3 LT4 LT5 LM0 LM1 LM2 LM3 LM4 LM5 LB0 LB1 LB2 LB3 LB4 LB5 LF1 LF2 LF3 LF4 LF5
+#define KEYS_R RC1 RC2 RC3 RC4 RC5 RN0 RN1 RN2 RN3 RN4 RN5 RT0 RT1 RT2 RT3 RT4 RT5 RM0 RM1 RM2 RM3 RM4 RM5 RB0 RB1 RB2 RB3 RB4 RB5 RF1 RF2 RF3 RF4 RF5
+#define THUMBS LH0 LH1 LH2 LH3 LH4 LH5 RH0 RH1 RH2 RH3 RH4 RH5
+
+// left-ceiling row
+#define LC1 4
+#define LC2 3
+#define LC3 2
+#define LC4 1
+#define LC5 0
+
+// right-ceiling row
+#define RC1 5
+#define RC2 6
+#define RC3 7
+#define RC4 8
+#define RC5 9
+
+// left-number row
+#define LN0 15
+#define LN1 14
+#define LN2 13
+#define LN3 12
+#define LN4 11
+#define LN5 10
+
+// right-number row
+#define RN0 16
+#define RN1 17
+#define RN2 18
+#define RN3 19
+#define RN4 20
+#define RN5 21
+
+// left-top row
+#define LT0 27
+#define LT1 26
+#define LT2 25
+#define LT3 24
+#define LT4 23
+#define LT5 22
+
+// right-top row
+#define RT0 28
+#define RT1 29
+#define RT2 30
+#define RT3 31
+#define RT4 32
+#define RT5 33
+
+// left-middle row
+#define LM0 39
+#define LM1 38
+#define LM2 37
+#define LM3 36
+#define LM4 35
+#define LM5 34
+
+// right-middle row
+#define RM0 40
+#define RM1 41
+#define RM2 42
+#define RM3 43
+#define RM4 44
+#define RM5 45
+
+// left-bottom row
+#define LB0 51
+#define LB1 50
+#define LB2 49
+#define LB3 48
+#define LB4 47
+#define LB5 46
+
+// right-bottom row
+#define RB0 58
+#define RB1 59
+#define RB2 60
+#define RB3 61
+#define RB4 62
+#define RB5 63
+
+// left-floor row
+#define LF1 68
+#define LF2 67
+#define LF3 66
+#define LF4 65
+#define LF5 64
+
+// right-floor row
+#define RF1 75
+#define RF2 76
+#define RF3 77
+#define RF4 78
+#define RF5 79
+
+// left thumb keys
+#define LH0 71
+#define LH1 70
+#define LH2 69
+#define LH3 54
+#define LH4 53
+#define LH5 52
+
+// right thumb keys
+#define RH0 72
+#define RH1 73
+#define RH2 74
+#define RH3 55
+#define RH4 56
+#define RH5 57
+
+// home row mods
+/ {
+    behaviors {
+        hml: home_row_mod_left {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <160>;
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <KEYS_R THUMBS>;
+            hold-trigger-on-release;
+        };
+        hmr: home_row_mod_right {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <160>;
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <KEYS_L THUMBS>;
+            hold-trigger-on-release;
+        };
+    };
+};
+
+// misc
 / {
     behaviors {
         lower: lower {
