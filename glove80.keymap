@@ -42,7 +42,7 @@
 / {
     keymap {
         compatible = "zmk,keymap";
-        // home row mods: alt - shift - ctrl - gui
+
         layer_Base {
             bindings = <
                 &kp F1                 &kp F2        &kp F3         &kp F4         &kp F5                                                                                                           &kp F6        &kp F7         &kp F8         &kp F9           &kp F10
@@ -57,9 +57,9 @@
             bindings = <
                 &kp C_BRI_DN           &kp C_BRI_UP   &kp C_PREV   &kp C_NEXT   &kp C_PP                                                                                      &kp C_MUTE       &kp C_VOL_DN   &kp C_VOL_UP      &none             &kp PAUSE_BREAK
                 &kp F11                &kp DEL        &none        &none        &none      &kp HOME                                                          &trans           &trans           &trans         &trans            &kp KP_MULTIPLY   &kp PRINTSCREEN
-                &trans                 &none          &none        &trans       &none      &kp END                                                           &trans           &trans           &kp LPAR       &kp RPAR          &kp KP_MINUS      &kp SCROLLLOCK
+                &trans                 &kp N1         &kp N2       &kp N3       &kp N4     &kp N5                                                            &kp N6           &kp N7           &kp N8         &kp N9            &kp N0            &kp SCROLLLOCK
                 &trans                 &none          &trans       &trans       &trans     &kp PG_UP                                                         &kp LEFT_ARROW   &kp DOWN_ARROW   &kp UP_ARROW   &kp RIGHT_ARROW   &kp KP_PLUS       &none
-                &trans                 &kp K_APP      &kp BSPC     &kp F11      &kp F12    &kp PG_DN   &trans   &trans   &to 0    &trans   &trans   &trans   &kp COMMA        &trans           &kp LS(LBKT)   &kp LS(RBKT)      &kp KP_ENTER      &trans
+                &trans                 &kp K_APP      &kp BSPC     &kp F11      &kp F12    &kp PG_DN   &trans   &trans   &to 0    &trans   &trans   &trans   &kp COMMA        &trans           &kp LPAR       &kp RPAR          &kp KP_MINUS      &trans
                 &magic LAYER_Magic 0   &kp CAPS       &kp INS      &kp F11      &kp F12                &trans   &trans   &trans   &trans   &trans   &trans                    &trans           &kp LBKT       &kp RBKT          &kp KP_ENTER      &trans
             >;
         };
