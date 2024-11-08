@@ -10,6 +10,9 @@
 #define LAYER_Magic 2
 #define LAYER_Gaming 3
 
+#include "keys.dts"
+#include "defaults.dts"
+
 / {
     underglow-layer {
         compatible = "zmk,underglow-layer";
@@ -86,121 +89,6 @@
     };
 };
 
-// key definitions
-// https://github.com/urob/zmk-helpers/blob/main/include/zmk-helpers/key-labels/glove80.h
-// Groups
-#define KEYS_L LC1 LC2 LC3 LC4 LC5 LN0 LN1 LN2 LN3 LN4 LN5 LT0 LT1 LT2 LT3 LT4 LT5 LM0 LM1 LM2 LM3 LM4 LM5 LB0 LB1 LB2 LB3 LB4 LB5 LF1 LF2 LF3 LF4 LF5
-#define KEYS_R RC1 RC2 RC3 RC4 RC5 RN0 RN1 RN2 RN3 RN4 RN5 RT0 RT1 RT2 RT3 RT4 RT5 RM0 RM1 RM2 RM3 RM4 RM5 RB0 RB1 RB2 RB3 RB4 RB5 RF1 RF2 RF3 RF4 RF5
-#define THUMBS LH0 LH1 LH2 LH3 LH4 LH5 RH0 RH1 RH2 RH3 RH4 RH5
-
-// left-ceiling row
-#define LC1 4
-#define LC2 3
-#define LC3 2
-#define LC4 1
-#define LC5 0
-
-// right-ceiling row
-#define RC1 5
-#define RC2 6
-#define RC3 7
-#define RC4 8
-#define RC5 9
-
-// left-number row
-#define LN0 15
-#define LN1 14
-#define LN2 13
-#define LN3 12
-#define LN4 11
-#define LN5 10
-
-// right-number row
-#define RN0 16
-#define RN1 17
-#define RN2 18
-#define RN3 19
-#define RN4 20
-#define RN5 21
-
-// left-top row
-#define LT0 27
-#define LT1 26
-#define LT2 25
-#define LT3 24
-#define LT4 23
-#define LT5 22
-
-// right-top row
-#define RT0 28
-#define RT1 29
-#define RT2 30
-#define RT3 31
-#define RT4 32
-#define RT5 33
-
-// left-middle row
-#define LM0 39
-#define LM1 38
-#define LM2 37
-#define LM3 36
-#define LM4 35
-#define LM5 34
-
-// right-middle row
-#define RM0 40
-#define RM1 41
-#define RM2 42
-#define RM3 43
-#define RM4 44
-#define RM5 45
-
-// left-bottom row
-#define LB0 51
-#define LB1 50
-#define LB2 49
-#define LB3 48
-#define LB4 47
-#define LB5 46
-
-// right-bottom row
-#define RB0 58
-#define RB1 59
-#define RB2 60
-#define RB3 61
-#define RB4 62
-#define RB5 63
-
-// left-floor row
-#define LF1 68
-#define LF2 67
-#define LF3 66
-#define LF4 65
-#define LF5 64
-
-// right-floor row
-#define RF1 75
-#define RF2 76
-#define RF3 77
-#define RF4 78
-#define RF5 79
-
-// left thumb keys
-#define LH0 71
-#define LH1 70
-#define LH2 69
-#define LH3 54
-#define LH4 53
-#define LH5 52
-
-// right thumb keys
-#define RH0 72
-#define RH1 73
-#define RH2 74
-#define RH3 55
-#define RH4 56
-#define RH5 57
-
 // home row mods
 / {
     behaviors {
@@ -225,103 +113,6 @@
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <KEYS_L THUMBS>;
             hold-trigger-on-release;
-        };
-    };
-};
-
-// misc
-/ {
-    behaviors {
-        lower: lower {
-            compatible = "zmk,behavior-tap-dance";
-            label = "LAYER_TAP_DANCE";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&mo LAYER_Lower>, <&to LAYER_Lower>;
-        };
-    };
-};
-
-/ {
-    macros {
-        rgb_ug_status_macro: rgb_ug_status_macro {
-            label = "RGB_UG_STATUS";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&rgb_ug RGB_STATUS>;
-        };
-    };
-};
-
-/ {
-    behaviors {
-        magic: magic {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MAGIC_HOLD_TAP";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&mo>, <&rgb_ug_status_macro>;
-        };
-    };
-};
-
-// Bluetooth behaviors
-/ {
-    behaviors {
-        bt_0: bt_0 {
-            compatible = "zmk,behavior-tap-dance";
-            label = "BT_0";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&bt_select_0>, <&bt BT_DISC 0>;
-        };
-        bt_1: bt_1 {
-            compatible = "zmk,behavior-tap-dance";
-            label = "BT_1";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&bt_select_1>, <&bt BT_DISC 1>;
-        };
-        bt_2: bt_2 {
-            compatible = "zmk,behavior-tap-dance";
-            label = "BT_2";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&bt_select_2>, <&bt BT_DISC 2>;
-        };
-        bt_3: bt_3 {
-            compatible = "zmk,behavior-tap-dance";
-            label = "BT_3";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&bt_select_3>, <&bt BT_DISC 3>;
-        };
-    };
-    macros {
-        bt_select_0: bt_select_0 {
-            label = "BT_SELECT_0";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&out OUT_BLE>, <&bt BT_SEL 0>;
-        };
-        bt_select_1: bt_select_1 {
-            label = "BT_SELECT_1";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&out OUT_BLE>, <&bt BT_SEL 1>;
-        };
-        bt_select_2: bt_select_2 {
-            label = "BT_SELECT_2";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&out OUT_BLE>, <&bt BT_SEL 2>;
-        };
-        bt_select_3: bt_select_3 {
-            label = "BT_SELECT_3";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&out OUT_BLE>, <&bt BT_SEL 3>;
         };
     };
 };

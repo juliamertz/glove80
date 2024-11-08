@@ -31,7 +31,7 @@ stdenvNoCC.mkDerivation {
 
   buildPhase = ''
     mkdir -p $out
-    ${keymapDrawer} -c ${configuration} parse -c 10 -z glove80.keymap > $out/layout.yaml
-    ${keymapDrawer} -c ${configuration} draw $out/layout.yaml > $out/layout.svg
+    ${keymapDrawer} -c ${configuration} parse -c 10 -z ${../src/main.dts} > $out/layout.yaml
+    ${keymapDrawer} -c ${configuration} draw --qmk-keyboard glove80 $out/layout.yaml > $out/layout.svg
   '';
 }

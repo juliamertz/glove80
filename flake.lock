@@ -84,16 +84,15 @@
     "glove80-zmk": {
       "flake": false,
       "locked": {
-        "lastModified": 1716636649,
-        "narHash": "sha256-b9M0/yZ3oUxKHOjwLxDQXEn/neVE1jhuEFDB5AWXTRA=",
-        "owner": "darknao",
+        "lastModified": 1731106960,
+        "narHash": "sha256-074MPEfhCmrN/5jOO2ezG+BKR+I05/NyUqJBPirNUe0=",
+        "owner": "juliamertz",
         "repo": "zmk",
-        "rev": "6d82f4819c71df9fea7b8e4f7936c60f4b6a50b4",
+        "rev": "128ac51edcb4b735b2435d54eb24a90981035f37",
         "type": "github"
       },
       "original": {
-        "owner": "darknao",
-        "ref": "darknao/rgb-dts",
+        "owner": "juliamertz",
         "repo": "zmk",
         "type": "github"
       }
@@ -182,7 +181,8 @@
         "glove80-zmk": "glove80-zmk",
         "keymap-drawer": "keymap-drawer",
         "nixpkgs": "nixpkgs",
-        "poetry2nix": "poetry2nix"
+        "poetry2nix": "poetry2nix",
+        "zmk-helpers": "zmk-helpers"
       }
     },
     "rust-overlay": {
@@ -253,6 +253,22 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "zmk-helpers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1729650883,
+        "narHash": "sha256-fKqp3sr6+ZmFLXwTXE7Ge9n7F6sy5mDakulJNvucy+I=",
+        "owner": "urob",
+        "repo": "zmk-helpers",
+        "rev": "230c7e18ee3c82325352287db29b59f53f20fa2a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "urob",
+        "repo": "zmk-helpers",
         "type": "github"
       }
     }

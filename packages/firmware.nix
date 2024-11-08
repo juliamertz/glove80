@@ -2,16 +2,17 @@
 let
   firmware = import inputs.glove80-zmk { inherit pkgs; };
 
-  keymap = ../glove80.keymap;
+  keymap = "${../src}/main.keymap";
   kconfig = ../glove80.conf;
+  extra_modules = [ inputs.zmk-helpers ];
 
   left = firmware.zmk.override {
-    inherit keymap kconfig;
+    inherit keymap kconfig extra_modules;
     board = "glove80_lh";
   };
 
   right = firmware.zmk.override {
-    inherit keymap kconfig;
+    inherit keymap kconfig extra_modules;
     board = "glove80_rh";
   };
 in

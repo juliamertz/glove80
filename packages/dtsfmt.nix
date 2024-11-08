@@ -9,8 +9,8 @@ rustPlatform.buildRustPackage rec {
   meta.mainProgram = pname;
   src = fetchgit {
     url = "https://github.com/juliamertz/${pname}.git";
-    rev = "b47a3720002ca06d657c7147f7dc56ca7abd68eb";
-    hash = "sha256-iepKJVZmCPo6TKoy1+kI41N7tDy+Ozf2SjW9bkcVmLo=";
+    rev = "ce24df4f243130876558d6ddfb958880b6187b13";
+    hash = "sha256-YVlvwZkr9m5SUY6AsG4dobvgKSeQbtAwOm/I7/kdXXc=";
   };
   cargoHash = "sha256-5fMoMaDHAAhfaTEdFwMqzD6N2zheh+AIjgCmaZZex84=";
 }

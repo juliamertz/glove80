@@ -5,11 +5,17 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+    poetry2nix = {
+      url = "github:nix-community/poetry2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     glove80-zmk = {
-      # Community fork with per-layer rgb
-      url = "github:darknao/zmk/darknao/rgb-dts";
-      # url = "github:moergo-sc/zmk";
+      url = "github:juliamertz/zmk";
+      flake = false;
+    };
+    zmk-helpers = {
+      url = "github:urob/zmk-helpers";
       flake = false;
     };
     firmware-loader = {
@@ -19,10 +25,6 @@
     keymap-drawer = {
       url = "github:caksoylar/keymap-drawer";
       flake = false;
-    };
-    poetry2nix = {
-      url = "github:nix-community/poetry2nix";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
