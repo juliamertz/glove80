@@ -59,7 +59,7 @@
                 &kp F11                &kp DEL        &none        &none        &none      &kp HOME                                                          &trans           &trans           &trans         &trans            &kp KP_MULTIPLY   &kp PRINTSCREEN
                 &trans                 &kp N1         &kp N2       &kp N3       &kp N4     &kp N5                                                            &kp N6           &kp N7           &kp N8         &kp N9            &kp N0            &kp SCROLLLOCK
                 &trans                 &none          &trans       &trans       &trans     &kp PG_UP                                                         &kp LEFT_ARROW   &kp DOWN_ARROW   &kp UP_ARROW   &kp RIGHT_ARROW   &kp KP_PLUS       &none
-                &trans                 &kp K_APP      &kp BSPC     &kp F11      &kp F12    &kp PG_DN   &trans   &trans   &to 0    &trans   &trans   &trans   &kp COMMA        &trans           &kp LPAR       &kp RPAR          &kp KP_MINUS      &trans
+                &trans                 &kp K_APP      &kp BSPC     &kp F11      &kp F12    &kp PG_DN   &trans   &trans   &to 0    &trans   &trans   &trans   &kp COMMA        &kp DOT          &kp LPAR       &kp RPAR          &kp KP_MINUS      &trans
                 &magic LAYER_Magic 0   &kp CAPS       &kp INS      &kp F11      &kp F12                &trans   &trans   &trans   &trans   &trans   &trans                    &trans           &kp LBKT       &kp RBKT          &kp KP_ENTER      &trans
             >;
         };
