@@ -18,6 +18,10 @@
       url = "github:urob/zmk-helpers";
       flake = false;
     };
+    dtsfmt = {
+      url = "github:juliamertz/dtsfmt";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     firmware-loader = {
       url = "github:juliamertz/glove80-firmware-updater";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,7 +55,7 @@
           inherit (config) packages;
 
           firmwareLoader = firmware-loader.packages.${system}.default;
-          dtsfmt = callPackage ./packages/dtsfmt.nix { inherit inputs; };
+          dtsfmt = inputs.dtsfmt.packages.${system}.default;
         in
         {
           packages.firmware = callPackage ./packages/firmware.nix { inherit inputs; };

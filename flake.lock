@@ -1,12 +1,35 @@
 {
   "nodes": {
-    "firmware-loader": {
+    "dtsfmt": {
       "inputs": {
         "flake-parts": "flake-parts",
         "nixpkgs": [
           "nixpkgs"
         ],
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": "rust-overlay",
+        "tree-sitter-devicetree": "tree-sitter-devicetree"
+      },
+      "locked": {
+        "lastModified": 1731439134,
+        "narHash": "sha256-QT+0vN4kPPDAhRMGeYm9++65gMs3mLH862MKpVbIh6A=",
+        "owner": "juliamertz",
+        "repo": "dtsfmt",
+        "rev": "56e9fc52ef3f07f9ff38f182be122ae833a442a2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "juliamertz",
+        "repo": "dtsfmt",
+        "type": "github"
+      }
+    },
+    "firmware-loader": {
+      "inputs": {
+        "flake-parts": "flake-parts_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay_2"
       },
       "locked": {
         "lastModified": 1728740666,
@@ -23,6 +46,27 @@
       }
     },
     "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "dtsfmt",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1730504689,
+        "narHash": "sha256-hgmguH29K2fvs9szpq2r3pz2/8cJd2LPS+b4tfNFCwE=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "506278e768c2a08bec68eb62932193e341f55c90",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
           "firmware-loader",
@@ -43,7 +87,7 @@
         "type": "github"
       }
     },
-    "flake-parts_2": {
+    "flake-parts_3": {
       "inputs": {
         "nixpkgs-lib": [
           "nixpkgs"
@@ -176,8 +220,9 @@
     },
     "root": {
       "inputs": {
+        "dtsfmt": "dtsfmt",
         "firmware-loader": "firmware-loader",
-        "flake-parts": "flake-parts_2",
+        "flake-parts": "flake-parts_3",
         "glove80-zmk": "glove80-zmk",
         "keymap-drawer": "keymap-drawer",
         "nixpkgs": "nixpkgs",
@@ -186,6 +231,27 @@
       }
     },
     "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "dtsfmt",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1731378398,
+        "narHash": "sha256-a0QWaiX8+AJ9/XBLGMDy6c90GD7HzpxKVdlFwCke5Pw=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "0ae9fc2f2fe5361837d59c0bdebbda176427111e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_2": {
       "inputs": {
         "nixpkgs": [
           "firmware-loader",
@@ -233,6 +299,23 @@
       "original": {
         "id": "systems",
         "type": "indirect"
+      }
+    },
+    "tree-sitter-devicetree": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1701095935,
+        "narHash": "sha256-SPniumaOh5f943CkGcGcscJLuPgsYPSb3nnKHIkrqwQ=",
+        "owner": "mskelton",
+        "repo": "tree-sitter-devicetree",
+        "rev": "376f28880f0d82c3c1c018231ab4affcb25b2d9a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mskelton",
+        "ref": "ifdef",
+        "repo": "tree-sitter-devicetree",
+        "type": "github"
       }
     },
     "treefmt-nix": {
