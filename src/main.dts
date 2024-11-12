@@ -10,8 +10,8 @@
 #define LAYER_Magic 2
 #define LAYER_Gaming 3
 
-#include "keys.dts"
-#include "defaults.dts"
+#include "keys.dtsi"
+#include "defaults.dtsi"
 
 / {
     underglow-layer {
