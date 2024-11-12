@@ -58,26 +58,28 @@
           dtsfmt = inputs.dtsfmt.packages.${system}.default;
         in
         {
-          packages.firmware = callPackage ./packages/firmware.nix { inherit inputs; };
-          packages.visual = callPackage ./packages/visual.nix { inherit inputs; };
-          packages.flash = writeShellScriptBin "flash" ''
-            ${lib.getExe firmwareLoader} --file ${packages.firmware}/glove80.uf2 --mount
-          '';
-          packages.format =
-            let
-              dtsfmtrc =
-                writeText ".dtsfmtrc.toml" # toml
-                  ''
-                    layout = "moergo:glove80"
-
-                    [options]
-                    separate_sections = true
-                    indent_size = 4
-                  '';
-            in
-            writeShellScriptBin "dtsfmt" ''
-              ${lib.getExe dtsfmt} --config-file ${dtsfmtrc} $@
+          packages = {
+            firmware = callPackage ./packages/firmware.nix { inherit inputs; };
+            visual = callPackage ./packages/visual.nix { inherit inputs; };
+            flash = writeShellScriptBin "flash" ''
+              ${lib.getExe firmwareLoader} --file ${packages.firmware}/glove80.uf2 --mount
             '';
+            format =
+              let
+                dtsfmtrc =
+                  writeText ".dtsfmtrc.toml" # toml
+                    ''
+                      layout = "moergo:glove80"
+
+                      [options]
+                      separate_sections = true
+                      indent_size = 4
+                    '';
+              in
+              writeShellScriptBin "dtsfmt" ''
+                ${lib.getExe dtsfmt} --config-file ${dtsfmtrc} $@
+              '';
+          };
 
           devShells.default = pkgs.mkShell { packages = [ packages.format ]; };
 
