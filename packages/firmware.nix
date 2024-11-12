@@ -2,7 +2,7 @@
 let
   firmware = import inputs.glove80-zmk { inherit pkgs; };
 
-  keymap = "${../src}/main.keymap";
+  keymap = "${../src}/main.dts";
   kconfig = ../glove80.conf;
   extra_modules = [ inputs.zmk-helpers ];
 
