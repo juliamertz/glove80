@@ -10,11 +10,11 @@
         "tree-sitter-devicetree": "tree-sitter-devicetree"
       },
       "locked": {
-        "lastModified": 1731439134,
-        "narHash": "sha256-QT+0vN4kPPDAhRMGeYm9++65gMs3mLH862MKpVbIh6A=",
+        "lastModified": 1740946176,
+        "narHash": "sha256-4/GsKfX6vHwu8h/0LkZiHPOO0uSiZv0bdutkDw79qc4=",
         "owner": "juliamertz",
         "repo": "dtsfmt",
-        "rev": "56e9fc52ef3f07f9ff38f182be122ae833a442a2",
+        "rev": "e31abc3dbfe42d1ceb8967754e08acbca1ee731a",
         "type": "github"
       },
       "original": {
@@ -128,15 +128,16 @@
     "glove80-zmk": {
       "flake": false,
       "locked": {
-        "lastModified": 1731106960,
-        "narHash": "sha256-074MPEfhCmrN/5jOO2ezG+BKR+I05/NyUqJBPirNUe0=",
-        "owner": "juliamertz",
+        "lastModified": 1737815853,
+        "narHash": "sha256-XO5q9IqU5HrhvcKoFD7aPFqrr8tJeyuHlRchZMErv04=",
+        "owner": "darknao",
         "repo": "zmk",
-        "rev": "128ac51edcb4b735b2435d54eb24a90981035f37",
+        "rev": "77fcafb45b2e884b1bf2aed4c3477c3826aca86e",
         "type": "github"
       },
       "original": {
-        "owner": "juliamertz",
+        "owner": "darknao",
+        "ref": "rgb-layer-24.12",
         "repo": "zmk",
         "type": "github"
       }

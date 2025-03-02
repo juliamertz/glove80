@@ -9,9 +9,8 @@
       url = "github:nix-community/poetry2nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     glove80-zmk = {
-      url = "github:juliamertz/zmk";
+      url = "github:darknao/zmk/rgb-layer-24.12";
       flake = false;
     };
     zmk-helpers = {
@@ -44,6 +43,7 @@
 
       perSystem =
         {
+          self',
           config,
           pkgs,
           lib,
@@ -59,6 +59,7 @@
         in
         {
           packages = {
+            default = self'.packages.firmware;
             firmware = callPackage ./packages/firmware.nix { inherit inputs; };
             visual = callPackage ./packages/visual.nix { inherit inputs; };
             flash = writeShellScriptBin "flash" ''
@@ -83,7 +84,6 @@
 
           devShells.default = pkgs.mkShell { packages = [ packages.format ]; };
 
-          packages.default = packages.firmware;
           apps.default = {
             type = "app";
             program = packages.flash;

@@ -7,7 +7,7 @@ let
       inherit board;
       keymap = "${../src}/main.dts";
       kconfig = ../glove80.conf;
-      extra_modules = [ inputs.zmk-helpers ];
+      snippets = [ inputs.zmk-helpers ];
     };
 
   left = board "glove80_lh";
