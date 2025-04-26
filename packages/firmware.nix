@@ -1,16 +1,20 @@
-{ pkgs, inputs, ... }:
-let
-  firmware = import inputs.glove80-zmk { inherit pkgs; };
-  board =
-    board:
-    firmware.zmk.override {
-      inherit board;
-      keymap = "${../src}/main.dts";
-      kconfig = ../glove80.conf;
-      snippets = [ inputs.zmk-helpers ];
-    };
+{
+  pkgs,
+  inputs,
+  ...
+}: let
+  firmware = import inputs.glove80-zmk {inherit pkgs;};
 
-  left = board "glove80_lh";
-  right = board "glove80_rh";
+  board' = opts: board:
+    firmware.zmk.override (opts // {inherit board;});
+
+  zmkConfig = opts: let
+    board = board' opts;
+  in
+    firmware.combine_uf2 (board "glove80_lh") (board "glove80_rh");
 in
-firmware.combine_uf2 left right
+  zmkConfig {
+    keymap = "${../src}/main.dts";
+    kconfig = ../glove80.conf;
+    extraModules = [inputs.zmk-helpers];
+  }
