@@ -29,9 +29,6 @@
   in
     writeText (builtins.baseNameOf path) joined;
 
-  board' = opts: board:
-    firmware.zmk.override (opts // {inherit board;});
-
   zmkConfig = opts: let
     patchedKeymap = runCommand "glove80-config" {} ''
       mkdir -p $out
@@ -41,7 +38,9 @@
 
     cleanOpts = lib.removeAttrs opts ["defines" "src"];
     finalOpts = cleanOpts // {keymap = "${patchedKeymap}/main.dts";};
-    board = board' finalOpts;
+
+    board = board:
+      firmware.zmk.override (finalOpts // {inherit board;});
   in
     firmware.combine_uf2 (board "glove80_lh") (board "glove80_rh");
 in
