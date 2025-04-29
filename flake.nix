@@ -7,10 +7,6 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-    poetry2nix = {
-      url = "github:nix-community/poetry2nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     glove80-zmk = {
       url = "github:darknao/zmk/rgb-layer-24.12";
       flake = false;
@@ -26,10 +22,6 @@
     firmware-loader = {
       url = "github:juliamertz/glove80-firmware-updater";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    keymap-drawer = {
-      url = "github:caksoylar/keymap-drawer";
-      flake = false;
     };
   };
 
@@ -63,8 +55,8 @@
         {
           packages = {
             default = self'.packages.firmware;
-            firmware = callPackage ./packages/firmware.nix { inherit inputs; };
-            visual = callPackage ./packages/visual.nix { inherit inputs; };
+            firmware = callPackage ./pkgs/firmware.nix { inherit inputs; };
+            visual = callPackage ./pkgs/visual.nix {};
             flash = writeShellScriptBin "flash" ''
               ${lib.getExe firmwareLoader} --file ${packages.firmware}/glove80.uf2 --mount
             '';
