@@ -56,6 +56,8 @@
           packages = {
             default = self'.packages.firmware;
             firmware = callPackage ./pkgs/firmware.nix { inherit inputs; };
+            firmware-work = callPackage ./pkgs/firmware.nix { inherit inputs; profile = "work"; };
+
             visual = callPackage ./pkgs/visual.nix {};
             flash = writeShellScriptBin "flash" ''
               ${lib.getExe firmwareLoader} --file ${packages.firmware}/glove80.uf2 --mount

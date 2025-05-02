@@ -5,21 +5,22 @@
   runCommand,
   inputs,
   enableGamingLayer ? false,
+  profile ? "default",
   ...
 }: let
   firmware = import inputs.glove80-zmk {inherit pkgs;};
 
-  toStr = val:
-    if builtins.isBool val
-    then
-      builtins.toString (
-        if val
-        then 1
-        else 0
-      )
-    else builtins.toString val;
-
   withDefines = path: defines: let
+    toStr = val:
+      if builtins.isBool val
+      then
+        builtins.toString (
+          if val
+          then 1
+          else 0
+        )
+      else builtins.toString val;
+
     definesText =
       defines
       |> lib.mapAttrsToList (name: value: "#define ${name} ${toStr value}")
@@ -28,6 +29,25 @@
     joined = [definesText (builtins.readFile path)] |> lib.concatStringsSep "\n\n";
   in
     writeText (builtins.baseNameOf path) joined;
+
+  serializeKeyValueSet = let
+    toStr = val:
+      if builtins.isString val
+      then ''"${val}"''
+      else if builtins.isBool val
+      then
+        (
+          if val
+          then "y"
+          else "n"
+        )
+      else builtins.toString val;
+  in
+    attrs:
+      attrs
+      |> lib.mapAttrsToList (key: value: "${key}=${toStr value}")
+      |> lib.concatStringsSep "\n"
+      |> pkgs.writeText "glove80.conf";
 
   zmkConfig = opts: let
     patchedKeymap = runCommand "glove80-config" {} ''
@@ -46,7 +66,7 @@
 in
   zmkConfig {
     src = ../src;
-    kconfig = ../glove80.conf;
+    kconfig = import ../config.nix {inherit lib profile;} |> serializeKeyValueSet;
     extraModules = [inputs.zmk-helpers];
     defines = {
       ENABLE_GAMING_LAYER = enableGamingLayer;
