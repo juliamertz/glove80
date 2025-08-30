@@ -10,7 +10,7 @@ First execute `nix run`, then connect both halves and put them into bootloader m
 
 ## Other
 
-To format `.dts` and `.dtsi` files in the repository run `nix run .#format .`
+To format `.dts` and `.dtsi` files in the repository run `nix fmt .`
 
 Running `nix build .#visual` generates a visualization of the keymap and writes it to `/result/layout.svg`
 

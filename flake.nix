@@ -33,64 +33,65 @@
     };
   };
 
-  outputs =
-    {
-      nixpkgs,
-      systems,
-      flake-parts,
-      firmware-loader,
-      ...
-    }@inputs:
-    flake-parts.lib.mkFlake { inherit inputs; } {
+  outputs = {
+    nixpkgs,
+    systems,
+    flake-parts,
+    firmware-loader,
+    ...
+  } @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} {
       systems = import systems;
 
-      perSystem =
-        {
-          self',
-          config,
-          pkgs,
-          lib,
-          system,
-          ...
-        }:
-        let
-          inherit (pkgs) callPackage writeShellScriptBin writeText;
-          inherit (config) packages;
+      perSystem = {
+        self',
+        config,
+        pkgs,
+        lib,
+        system,
+        ...
+      }: let
+        inherit (pkgs) callPackage writeShellScriptBin writeText;
+        inherit (config) packages;
 
-          firmwareLoader = firmware-loader.packages.${system}.default;
-          dtsfmt = inputs.dtsfmt.packages.${system}.default;
-        in
-        {
-          packages = {
-            default = self'.packages.firmware;
-            firmware = callPackage ./packages/firmware.nix { inherit inputs; };
-            visual = callPackage ./packages/visual.nix { inherit inputs; };
-            flash = writeShellScriptBin "flash" ''
-              ${lib.getExe firmwareLoader} --file ${packages.firmware}/glove80.uf2 --mount
-            '';
-            format =
-              let
-                dtsfmtrc =
-                  writeText ".dtsfmtrc.toml" # toml
-                    ''
-                      layout = "moergo:glove80"
-
-                      [options]
-                      separate_sections = true
-                      indent_size = 4
-                    '';
-              in
-              writeShellScriptBin "dtsfmt" ''
-                ${lib.getExe dtsfmt} --config-file ${dtsfmtrc} $@
-              '';
-          };
-
-          devShells.default = pkgs.mkShell { packages = [ packages.format ]; };
-
-          apps.default = {
-            type = "app";
-            program = packages.flash;
-          };
+        firmwareLoader = firmware-loader.packages.${system}.default;
+        dtsfmt = inputs.dtsfmt.packages.${system}.default;
+      in {
+        packages = {
+          default = self'.packages.firmware;
+          firmware = callPackage ./packages/firmware.nix {inherit inputs;};
+          visual = callPackage ./packages/visual.nix {inherit inputs;};
+          flash = writeShellScriptBin "flash" ''
+            ${lib.getExe firmwareLoader} --file ${packages.firmware}/glove80.uf2 --mount
+          '';
         };
+
+        formatter = let
+          dtsfmtrc =
+            writeText ".dtsfmtrc.toml" # toml
+            
+            ''
+              layout = "moergo:glove80"
+
+              [options]
+              separate_sections = true
+              indent_size = 4
+            '';
+        in
+          writeShellScriptBin "dtsfmt" ''
+            ${lib.getExe dtsfmt} --config-file ${dtsfmtrc} $@
+          '';
+
+        checks.firmware = self'.packages.firmware;
+
+        devShells.default = pkgs.mkShell {
+          packages = [];
+        };
+
+        apps.default = {
+          type = "app";
+          program = packages.flash;
+        };
+      };
     };
 }
