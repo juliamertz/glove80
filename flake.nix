@@ -34,7 +34,6 @@
   };
 
   outputs = {
-    nixpkgs,
     systems,
     flake-parts,
     firmware-loader,
@@ -61,15 +60,11 @@
           default = self'.packages.firmware;
           firmware = callPackage ./packages/firmware.nix {inherit inputs;};
           visual = callPackage ./packages/visual.nix {inherit inputs;};
-          flash = writeShellScriptBin "flash" ''
-            ${lib.getExe firmwareLoader} --file ${packages.firmware}/glove80.uf2 --mount
-          '';
         };
 
         formatter = let
           dtsfmtrc =
             writeText ".dtsfmtrc.toml" # toml
-            
             ''
               layout = "moergo:glove80"
 
@@ -82,15 +77,17 @@
             ${lib.getExe dtsfmt} --config-file ${dtsfmtrc} $@
           '';
 
+        apps.default = {
+          type = "app";
+          program = writeShellScriptBin "flash" ''
+            ${lib.getExe firmwareLoader} --file ${packages.firmware}/glove80.uf2 --mount
+          '';
+        };
+
         checks.firmware = self'.packages.firmware;
 
         devShells.default = pkgs.mkShell {
           packages = [];
-        };
-
-        apps.default = {
-          type = "app";
-          program = packages.flash;
         };
       };
     };
