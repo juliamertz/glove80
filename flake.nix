@@ -77,15 +77,13 @@
 
                       [options]
                       separate_sections = true
-                      indent_size = 2
+                      indent_size = 4
                     '';
               in
               writeShellScriptBin "dtsfmt" ''
                 ${lib.getExe dtsfmt} --config-file ${dtsfmtrc} $@
               '';
           };
-
-          checks.firmware = self'.packages.firmware;
 
           devShells.default = pkgs.mkShell { packages = [ packages.format ]; };
 
