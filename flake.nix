@@ -12,7 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     glove80-zmk = {
-      url = "github:darknao/zmk/rgb-layer-24.12";
+      url = "github:darknao/zmk/rgb-layer-25.08";
       flake = false;
     };
     zmk-helpers = {
